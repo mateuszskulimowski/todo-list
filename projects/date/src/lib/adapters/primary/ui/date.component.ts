@@ -11,5 +11,5 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateComponent {
-  todayDate: Date = new Date();
+  todayString: string = new Date().toDateString();
 }
