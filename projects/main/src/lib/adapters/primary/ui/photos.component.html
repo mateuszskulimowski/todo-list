@@ -1,0 +1,15 @@
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center pt-5">
+        <div class=" col-3 mx-4" *ngFor="let photo of photos$ | async">
+            <div class="me-2">
+                <img [src]="photo.imageUrl" class="img-fluid">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- <ul>
+    <li *ngFor="let item of photos$ | async">{{ item | json }}</li>
+</ul> -->

@@ -1,14 +1,19 @@
-<div class="header container-fluid text-white ">
+<div routerLink="/" class=" header container-fluid text-white ">
     <h1 class="mb-0">Todo App</h1>
 </div>
-<div class="time container-fluid ">
+<div class="container-flex pt-3">
+
+    <div class="col"></div>
     <lib-date></lib-date>
+    <div class="container mb-5">
+        <hr class="my-4 container ">
+    </div>
+
 </div>
 
-<div class="container">
-    <hr class="my-4 container ">
-</div>
+
 
 
 
 <router-outlet></router-outlet>
+<lib-photos></lib-photos>

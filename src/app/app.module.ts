@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
 
 import { DateComponentModule } from '@date';
 import { AngularFireModule } from '@angular/fire/compat';
+import { FirebasePhotosServiceModule, PhotosComponentModule } from '@main';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     BrowserAnimationsModule,
     DateComponentModule,
     AngularFireModule.initializeApp(environment.firebase),
+    PhotosComponentModule,
+    FirebasePhotosServiceModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
