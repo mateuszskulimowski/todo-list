@@ -1,4 +1,5 @@
 export interface AddTaskDTO {
-  readonly idTask: string;
+  readonly id: string;
   readonly task: string;
+  readonly isChecked: boolean;
 }

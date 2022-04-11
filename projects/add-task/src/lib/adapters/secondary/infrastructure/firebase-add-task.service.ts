@@ -9,9 +9,11 @@ import { map } from 'rxjs/operators';
 import { GetsAllAddTaskDtoPort } from '../../../application/ports/secondary/gets-all-add-task.dto-port';
 import { filterByCriterion } from '@lowgular/shared';
 
+import { SetsAddTaskDtoPort } from '../../../application/ports/secondary/sets-add-task.dto-port';
+
 @Injectable()
 export class FirebaseAddTaskService
-  implements AddsAddTaskDtoPort, GetsAllAddTaskDtoPort
+  implements AddsAddTaskDtoPort, GetsAllAddTaskDtoPort, SetsAddTaskDtoPort
 {
   constructor(private _client: AngularFirestore) {}
 
@@ -24,5 +26,9 @@ export class FirebaseAddTaskService
       .collection<AddTaskDTO>('add-tasks')
       .valueChanges({ idField: 'id' })
       .pipe(map((data: AddTaskDTO[]) => filterByCriterion(data, criterion)));
+  }
+
+  set(addTask: Partial<AddTaskDTO>): void {
+    this._client.doc('add-tasks/' + addTask.id).update(addTask);
   }
 }

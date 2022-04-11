@@ -1,5 +1,12 @@
 <form [formGroup]="task" (ngSubmit)="onAddTaskSubmited(task)">
-    <input type="text" formControlName="task" placeholder="Task">
-    <input type="submit" value="Submit">
-
+  <input
+    type="text"
+    formControlName="task"
+    placeholder="Task"
+    ngModel
+    required
+    class="d-block"
+  />
+  <button type="submit" [disabled]="task.invalid">Add Task</button>
+  <button type="button" class="bg-secondary m-3">Cancel</button>
 </form>

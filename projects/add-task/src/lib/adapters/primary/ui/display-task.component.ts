@@ -4,12 +4,17 @@ import {
   ChangeDetectionStrategy,
   Inject,
 } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, takeLast } from 'rxjs';
 import { AddTaskDTO } from '../../../application/ports/secondary/add-task.dto';
 import {
   GETS_ALL_ADD_TASK_DTO,
   GetsAllAddTaskDtoPort,
 } from '../../../application/ports/secondary/gets-all-add-task.dto-port';
+import {
+  SETS_ADD_TASK_DTO,
+  SetsAddTaskDtoPort,
+} from '../../../application/ports/secondary/sets-add-task.dto-port';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'lib-display-task',
@@ -19,9 +24,29 @@ import {
 })
 export class DisplayTaskComponent {
   displayTask$: Observable<AddTaskDTO[]> = this._getsAllAddTaskDto.getAll();
+  readonly setTask: FormGroup = new FormGroup({ setTask: new FormControl() });
 
   constructor(
     @Inject(GETS_ALL_ADD_TASK_DTO)
-    private _getsAllAddTaskDto: GetsAllAddTaskDtoPort
+    private _getsAllAddTaskDto: GetsAllAddTaskDtoPort,
+    @Inject(SETS_ADD_TASK_DTO) private _setsAddTaskDto: SetsAddTaskDtoPort
   ) {}
+
+  // onSetTaskCheckeded(setTask: FormGroup): void {
+  //   this._setsAddTaskDto.set({});
+  // }
+
+  onItemClicked(setTask: any): void {
+    if (setTask.isChecked === false) {
+      this._setsAddTaskDto.set({
+        id: setTask.id,
+        isChecked: true,
+      });
+    } else {
+      this._setsAddTaskDto.set({
+        id: setTask.id,
+        isChecked: false,
+      });
+    }
+  }
 }
