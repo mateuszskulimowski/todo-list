@@ -15,6 +15,10 @@ import {
   SetsAddTaskDtoPort,
 } from '../../../application/ports/secondary/sets-add-task.dto-port';
 import { FormGroup, FormControl } from '@angular/forms';
+import {
+  REMOVES_ADD_TASK_DTO,
+  RemovesAddTaskDtoPort,
+} from '../../../application/ports/secondary/removes-add-task.dto-port';
 
 @Component({
   selector: 'lib-display-task',
@@ -29,7 +33,9 @@ export class DisplayTaskComponent {
   constructor(
     @Inject(GETS_ALL_ADD_TASK_DTO)
     private _getsAllAddTaskDto: GetsAllAddTaskDtoPort,
-    @Inject(SETS_ADD_TASK_DTO) private _setsAddTaskDto: SetsAddTaskDtoPort
+    @Inject(SETS_ADD_TASK_DTO) private _setsAddTaskDto: SetsAddTaskDtoPort,
+    @Inject(REMOVES_ADD_TASK_DTO)
+    private _removesAddTaskDto: RemovesAddTaskDtoPort
   ) {}
 
   // onSetTaskCheckeded(setTask: FormGroup): void {
@@ -48,5 +54,9 @@ export class DisplayTaskComponent {
         isChecked: false,
       });
     }
+  }
+
+  removeTask(taskId: string): void {
+    this._removesAddTaskDto.remove(taskId);
   }
 }

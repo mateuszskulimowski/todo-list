@@ -11,9 +11,15 @@ import { filterByCriterion } from '@lowgular/shared';
 
 import { SetsAddTaskDtoPort } from '../../../application/ports/secondary/sets-add-task.dto-port';
 
+import { RemovesAddTaskDtoPort } from '../../../application/ports/secondary/removes-add-task.dto-port';
+
 @Injectable()
 export class FirebaseAddTaskService
-  implements AddsAddTaskDtoPort, GetsAllAddTaskDtoPort, SetsAddTaskDtoPort
+  implements
+    AddsAddTaskDtoPort,
+    GetsAllAddTaskDtoPort,
+    SetsAddTaskDtoPort,
+    RemovesAddTaskDtoPort
 {
   constructor(private _client: AngularFirestore) {}
 
@@ -30,5 +36,9 @@ export class FirebaseAddTaskService
 
   set(addTask: Partial<AddTaskDTO>): void {
     this._client.doc('add-tasks/' + addTask.id).update(addTask);
+  }
+
+  remove(id: string): void {
+    this._client.doc('add-tasks/' + id).delete();
   }
 }
