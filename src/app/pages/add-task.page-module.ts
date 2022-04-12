@@ -6,19 +6,21 @@ import { AddTaskComponentModule } from '../../../projects/add-task/src/lib/adapt
 import { FirebaseAddTaskServiceModule } from '../../../projects/add-task/src/lib/adapters/secondary/infrastructure/firebase-add-task.service-module';
 import { DisplayTaskComponentModule } from '../../../projects/add-task/src/lib/adapters/primary/ui/display-task.component-module';
 
-@NgModule({ imports: [CommonModule, 
-      RouterModule.forChild([
-        {
-          path: '',
-          component: AddTaskPage,
-        }
-      ]),
-  AddTaskComponentModule,
-  FirebaseAddTaskServiceModule,
-  DisplayTaskComponentModule
-],
-  	declarations: [AddTaskPage],
-  	providers: [],
-  	exports: [] })
-export class AddTaskPageModule {
-}
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: AddTaskPage,
+      },
+    ]),
+    AddTaskComponentModule,
+    FirebaseAddTaskServiceModule,
+    DisplayTaskComponentModule,
+  ],
+  declarations: [AddTaskPage],
+  providers: [],
+  exports: [],
+})
+export class AddTaskPageModule {}

@@ -9,6 +9,10 @@ import {
   ADDS_ADD_TASK_DTO,
   AddsAddTaskDtoPort,
 } from '../../../application/ports/secondary/adds-add-task.dto-port';
+import {
+  REMOVES_ADD_TASK_DTO,
+  RemovesAddTaskDtoPort,
+} from '../../../application/ports/secondary/removes-add-task.dto-port';
 
 @Component({
   selector: 'lib-add-task',
@@ -20,13 +24,18 @@ export class AddTaskComponent {
   readonly task: FormGroup = new FormGroup({ task: new FormControl() });
 
   constructor(
-    @Inject(ADDS_ADD_TASK_DTO) private _addsAddTaskDto: AddsAddTaskDtoPort
+    @Inject(ADDS_ADD_TASK_DTO) private _addsAddTaskDto: AddsAddTaskDtoPort,
+    @Inject(REMOVES_ADD_TASK_DTO)
+    private _removesAddTaskDto: RemovesAddTaskDtoPort
   ) {}
 
   onAddTaskSubmited(addTask: FormGroup): void {
     this._addsAddTaskDto.add({
       task: addTask.get('task')?.value,
     });
+    this.task.reset();
+  }
+  cancelAnimationFrame(): void {
     this.task.reset();
   }
 }

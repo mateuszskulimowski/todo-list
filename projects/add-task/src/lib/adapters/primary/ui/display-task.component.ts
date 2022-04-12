@@ -3,6 +3,7 @@ import {
   ViewEncapsulation,
   ChangeDetectionStrategy,
   Inject,
+  TemplateRef,
 } from '@angular/core';
 import { Observable, takeLast } from 'rxjs';
 import { AddTaskDTO } from '../../../application/ports/secondary/add-task.dto';
@@ -19,6 +20,7 @@ import {
   REMOVES_ADD_TASK_DTO,
   RemovesAddTaskDtoPort,
 } from '../../../application/ports/secondary/removes-add-task.dto-port';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'lib-display-task',
@@ -58,5 +60,18 @@ export class DisplayTaskComponent {
 
   removeTask(taskId: string): void {
     this._removesAddTaskDto.remove(taskId);
+  }
+}
+
+export class DemoModalScrollingLongContentComponent {
+  modalRef?: BsModalRef;
+  items: any[];
+
+  constructor(private modalService: BsModalService) {
+    this.items = Array(15).fill(0);
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 }

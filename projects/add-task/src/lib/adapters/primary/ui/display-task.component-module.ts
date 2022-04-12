@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DisplayTaskComponent } from './display-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 @NgModule({
   imports: [
@@ -11,6 +11,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ReactiveFormsModule,
     // BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    ModalModule.forRoot(),
   ],
   declarations: [DisplayTaskComponent],
   providers: [],

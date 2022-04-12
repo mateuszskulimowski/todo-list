@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 import { DateComponentModule } from '@date';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FirebasePhotosServiceModule, PhotosComponentModule } from '@main';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { FirebasePhotosServiceModule, PhotosComponentModule } from '@main';
     AngularFireModule.initializeApp(environment.firebase),
     PhotosComponentModule,
     FirebasePhotosServiceModule,
+    ModalModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

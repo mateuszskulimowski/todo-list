@@ -8,5 +8,11 @@
     class="d-block"
   />
   <button type="submit" [disabled]="task.invalid">Add Task</button>
-  <button type="button" class="bg-secondary m-3">Cancel</button>
+  <button
+    type="button"
+    class="bg-secondary m-3"
+    (click)="cancelAnimationFrame()"
+  >
+    Cancel
+  </button>
 </form>
