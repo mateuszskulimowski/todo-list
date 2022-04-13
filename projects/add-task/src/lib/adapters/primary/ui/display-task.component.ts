@@ -5,7 +5,7 @@ import {
   Inject,
   TemplateRef,
 } from '@angular/core';
-import { Observable, takeLast } from 'rxjs';
+import { map, mapTo, Observable, takeLast } from 'rxjs';
 import { AddTaskDTO } from '../../../application/ports/secondary/add-task.dto';
 import {
   GETS_ALL_ADD_TASK_DTO,
@@ -29,7 +29,9 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DisplayTaskComponent {
-  displayTask$: Observable<AddTaskDTO[]> = this._getsAllAddTaskDto.getAll();
+  displayTask$: Observable<AddTaskDTO[]> = this._getsAllAddTaskDto
+    .getAll()
+    .pipe(map((task: AddTaskDTO[]) => task.sort((a, b) => a.order - b.order)));
   readonly setTask: FormGroup = new FormGroup({ setTask: new FormControl() });
   modalRef?: BsModalRef;
 
