@@ -7,10 +7,12 @@
     required
     class="d-block"
   />
-  <button type="submit" [disabled]="task.invalid">Add Task</button>
+  <button type="submit" [disabled]="task.invalid" class="addButton">
+    Add Task
+  </button>
   <button
     type="button"
-    class="bg-secondary m-3"
+    class="bg-secondary m-3 cancelMain"
     (click)="cancelAnimationFrame()"
   >
     Cancel

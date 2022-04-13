@@ -31,8 +31,10 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 export class DisplayTaskComponent {
   displayTask$: Observable<AddTaskDTO[]> = this._getsAllAddTaskDto.getAll();
   readonly setTask: FormGroup = new FormGroup({ setTask: new FormControl() });
+  modalRef?: BsModalRef;
 
   constructor(
+    private modalService: BsModalService,
     @Inject(GETS_ALL_ADD_TASK_DTO)
     private _getsAllAddTaskDto: GetsAllAddTaskDtoPort,
     @Inject(SETS_ADD_TASK_DTO) private _setsAddTaskDto: SetsAddTaskDtoPort,
@@ -61,16 +63,6 @@ export class DisplayTaskComponent {
   removeTask(taskId: string): void {
     this._removesAddTaskDto.remove(taskId);
   }
-}
-
-export class DemoModalScrollingLongContentComponent {
-  modalRef?: BsModalRef;
-  items: any[];
-
-  constructor(private modalService: BsModalService) {
-    this.items = Array(15).fill(0);
-  }
-
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }

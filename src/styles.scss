@@ -19,8 +19,21 @@
 // button{
 //     cursor: pointer;
 // }
-button{
+.addButton{
     background-color: #7749F8;
     color: white;}
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
+
+.pointer{
+    cursor: pointer;
+    
+}
+.pointer::after{
+    background-color:#7749F8;
+}
+
+.cancelMain{
+color:white;
+}
+
