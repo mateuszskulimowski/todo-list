@@ -7,7 +7,12 @@
     required
     class="d-block"
   />
-  <button type="submit" [disabled]="task.invalid" class="addButton">
+  <button
+    type="submit"
+    [disabled]="task.invalid"
+    class="addButton"
+    (click)="orderUp()"
+  >
     Add Task
   </button>
   <button
