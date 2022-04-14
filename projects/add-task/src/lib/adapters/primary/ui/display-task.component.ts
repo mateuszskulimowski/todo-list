@@ -31,7 +31,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 export class DisplayTaskComponent {
   displayTask$: Observable<AddTaskDTO[]> = this._getsAllAddTaskDto
     .getAll()
-    .pipe(map((task: AddTaskDTO[]) => task.sort((a, b) => a.order - b.order)));
+    .pipe(map((task: AddTaskDTO[]) => task.sort((a, b) => b.order - a.order)));
   readonly setTask: FormGroup = new FormGroup({ setTask: new FormControl() });
   modalRef?: BsModalRef;
 

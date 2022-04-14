@@ -22,7 +22,7 @@ import {
 })
 export class AddTaskComponent {
   readonly task: FormGroup = new FormGroup({ task: new FormControl() });
-  order = 1;
+  // order = 1;
   constructor(
     @Inject(ADDS_ADD_TASK_DTO) private _addsAddTaskDto: AddsAddTaskDtoPort,
     @Inject(REMOVES_ADD_TASK_DTO)
@@ -32,15 +32,15 @@ export class AddTaskComponent {
   onAddTaskSubmited(addTask: FormGroup): void {
     this._addsAddTaskDto.add({
       task: addTask.get('task')?.value,
-      order: this.order,
+      // order: this.order,
     });
     this.task.reset();
   }
   cancelAnimationFrame(): void {
     this.task.reset();
   }
-  orderUp() {
-    this.order = this.order + 1;
-    console.log(this.order);
-  }
+  // orderUp() {
+  //   this.order = this.order + 1;
+  //   console.log(this.order);
+  // }
 }
