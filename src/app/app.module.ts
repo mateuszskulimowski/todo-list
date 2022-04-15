@@ -11,6 +11,7 @@ import { DateComponentModule } from '@date';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FirebasePhotosServiceModule, PhotosComponentModule } from '@main';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { AlertTaskComponentModule } from 'projects/add-task/src/lib/adapters/primary/ui/alert-task.component-module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     PhotosComponentModule,
     FirebasePhotosServiceModule,
     ModalModule.forRoot(),
+    AlertTaskComponentModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

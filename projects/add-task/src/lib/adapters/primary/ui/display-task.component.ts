@@ -34,6 +34,9 @@ export class DisplayTaskComponent {
     .pipe(map((task: AddTaskDTO[]) => task.sort((a, b) => b.order - a.order)));
   readonly setTask: FormGroup = new FormGroup({ setTask: new FormControl() });
   modalRef?: BsModalRef;
+  count = 0;
+  deleteTaskAlert = false;
+  completeTaskAlert = false;
 
   constructor(
     private modalService: BsModalService,
@@ -43,10 +46,6 @@ export class DisplayTaskComponent {
     @Inject(REMOVES_ADD_TASK_DTO)
     private _removesAddTaskDto: RemovesAddTaskDtoPort
   ) {}
-
-  // onSetTaskCheckeded(setTask: FormGroup): void {
-  //   this._setsAddTaskDto.set({});
-  // }
 
   onItemClicked(setTask: any): void {
     if (setTask.isChecked === false) {
@@ -67,5 +66,23 @@ export class DisplayTaskComponent {
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+  // showDeleteTask() {
+  //   this.count++;
+  //   console.log(this.count);
+  // }
+  showDeleteTask() {
+    this.deleteTaskAlert = true;
+    this.completeTaskAlert = false;
+  }
+
+  showCompleteTask(TaskChecked: boolean) {
+    this.deleteTaskAlert = false;
+    this.completeTaskAlert = true;
+    if (TaskChecked === false) {
+      this.count++;
+    } else {
+      this.count--;
+    }
   }
 }
