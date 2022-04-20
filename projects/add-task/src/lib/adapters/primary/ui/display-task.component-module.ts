@@ -4,6 +4,7 @@ import { DisplayTaskComponent } from './display-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     CommonModule,
@@ -11,6 +12,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     // BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
+    RouterModule,
   ],
   declarations: [DisplayTaskComponent],
   providers: [],

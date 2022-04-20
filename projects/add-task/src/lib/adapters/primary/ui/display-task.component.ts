@@ -21,6 +21,7 @@ import {
   RemovesAddTaskDtoPort,
 } from '../../../application/ports/secondary/removes-add-task.dto-port';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-display-task',
@@ -44,7 +45,8 @@ export class DisplayTaskComponent {
     private _getsAllAddTaskDto: GetsAllAddTaskDtoPort,
     @Inject(SETS_ADD_TASK_DTO) private _setsAddTaskDto: SetsAddTaskDtoPort,
     @Inject(REMOVES_ADD_TASK_DTO)
-    private _removesAddTaskDto: RemovesAddTaskDtoPort
+    private _removesAddTaskDto: RemovesAddTaskDtoPort,
+    private router: Router
   ) {}
 
   onItemClicked(setTask: any): void {
