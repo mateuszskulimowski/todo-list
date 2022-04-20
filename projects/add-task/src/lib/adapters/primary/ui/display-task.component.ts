@@ -40,7 +40,7 @@ export class DisplayTaskComponent {
   );
   readonly setTask: FormGroup = new FormGroup({ setTask: new FormControl() });
   modalRef?: BsModalRef;
-  // count = 0;
+
   deleteTaskAlert = false;
   completeTaskAlert = false;
 
@@ -74,10 +74,7 @@ export class DisplayTaskComponent {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
-  // showDeleteTask() {
-  //   this.count++;
-  //   console.log(this.count);
-  // }
+
   showDeleteTask() {
     this.deleteTaskAlert = true;
     this.completeTaskAlert = false;
@@ -86,10 +83,5 @@ export class DisplayTaskComponent {
   showCompleteTask(TaskChecked: boolean) {
     this.deleteTaskAlert = false;
     this.completeTaskAlert = true;
-    // if (TaskChecked === false) {
-    //   this.count++;
-    // } else {
-    //   this.count--;
-    // }
   }
 }
