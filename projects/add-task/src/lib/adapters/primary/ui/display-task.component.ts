@@ -33,9 +33,14 @@ export class DisplayTaskComponent {
   displayTask$: Observable<AddTaskDTO[]> = this._getsAllAddTaskDto
     .getAll()
     .pipe(map((task: AddTaskDTO[]) => task.sort((a, b) => b.order - a.order)));
+  order$: Observable<number> = this.displayTask$.pipe(
+    map((taskList) => {
+      return taskList.filter((task) => task.isChecked).length;
+    })
+  );
   readonly setTask: FormGroup = new FormGroup({ setTask: new FormControl() });
   modalRef?: BsModalRef;
-  count = 0;
+  // count = 0;
   deleteTaskAlert = false;
   completeTaskAlert = false;
 
@@ -81,10 +86,10 @@ export class DisplayTaskComponent {
   showCompleteTask(TaskChecked: boolean) {
     this.deleteTaskAlert = false;
     this.completeTaskAlert = true;
-    if (TaskChecked === false) {
-      this.count++;
-    } else {
-      this.count--;
-    }
+    // if (TaskChecked === false) {
+    //   this.count++;
+    // } else {
+    //   this.count--;
+    // }
   }
 }
