@@ -5,6 +5,7 @@ import { AddTaskPage } from './add-task.page';
 import { AddTaskComponentModule } from '../../../projects/add-task/src/lib/adapters/primary/ui/add-task.component-module';
 import { FirebaseAddTaskServiceModule } from '../../../projects/add-task/src/lib/adapters/secondary/infrastructure/firebase-add-task.service-module';
 import { DisplayTaskComponentModule } from '../../../projects/add-task/src/lib/adapters/primary/ui/display-task.component-module';
+import { AlertTaskComponentModule } from '../../../projects/add-task/src/lib/adapters/primary/ui/alert-task.component-module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { DisplayTaskComponentModule } from '../../../projects/add-task/src/lib/a
     AddTaskComponentModule,
     FirebaseAddTaskServiceModule,
     DisplayTaskComponentModule,
+    AlertTaskComponentModule
   ],
   declarations: [AddTaskPage],
   providers: [],

@@ -12,6 +12,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { FirebasePhotosServiceModule, PhotosComponentModule } from '@main';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertTaskComponentModule } from 'projects/add-task/src/lib/adapters/primary/ui/alert-task.component-module';
+import { InMemoryAlertStorageModule } from '@add-task';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { AlertTaskComponentModule } from 'projects/add-task/src/lib/adapters/pri
     FirebasePhotosServiceModule,
     ModalModule.forRoot(),
     AlertTaskComponentModule,
+    InMemoryAlertStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

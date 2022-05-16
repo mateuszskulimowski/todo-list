@@ -1,8 +1,16 @@
+import { Observable } from 'rxjs';
+import { AlertDTO } from '../../../application/ports/secondary/alert.dto';
 import {
   Component,
   ViewEncapsulation,
   ChangeDetectionStrategy,
+  Inject,
 } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
+import {
+  ALERT_DTO_STORAGE,
+  AlertDtoStoragePort,
+} from '../../../application/ports/secondary/alert-dto.storage-port';
 
 @Component({
   selector: 'lib-alert-task',
@@ -11,5 +19,8 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AlertTaskComponent {
-  count = 0;
+  alert$: Observable<AlertDTO> = this._alertDtoStorage.asObservable();
+  constructor(
+    @Inject(ALERT_DTO_STORAGE) private _alertDtoStorage: AlertDtoStoragePort
+  ) {}
 }

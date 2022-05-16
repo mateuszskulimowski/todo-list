@@ -22,6 +22,15 @@ import {
 } from '../../../application/ports/secondary/removes-add-task.dto-port';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
+import {
+  AlertDtoStoragePort,
+  ALERT_DTO_STORAGE,
+} from '../../../application/ports/secondary/alert-dto.storage-port';
+import {
+  AddTaskDtoStoragePort,
+  ADD_TASK_DTO_STORAGE,
+} from '../../../application/ports/secondary/add-task-dto.storage-port';
+// import { transition } from '@angular/animations';
 
 @Component({
   selector: 'lib-display-task',
@@ -38,6 +47,8 @@ export class DisplayTaskComponent {
       return taskList.filter((task) => task.isChecked).length;
     })
   );
+  // confirmDelete$: Observable<AddTaskDTO> =
+  //   this._getTaskFromMemoryStorage.asObservable();
   readonly setTask: FormGroup = new FormGroup({ setTask: new FormControl() });
   modalRef?: BsModalRef;
 
@@ -51,7 +62,10 @@ export class DisplayTaskComponent {
     @Inject(SETS_ADD_TASK_DTO) private _setsAddTaskDto: SetsAddTaskDtoPort,
     @Inject(REMOVES_ADD_TASK_DTO)
     private _removesAddTaskDto: RemovesAddTaskDtoPort,
-    private router: Router
+    private router: Router,
+    @Inject(ADD_TASK_DTO_STORAGE)
+    private _getTaskFromMemoryStorage: AddTaskDtoStoragePort,
+    @Inject(ALERT_DTO_STORAGE) private _alertDtoStorage: AlertDtoStoragePort
   ) {}
 
   onItemClicked(setTask: any): void {
@@ -84,4 +98,19 @@ export class DisplayTaskComponent {
     this.deleteTaskAlert = false;
     this.completeTaskAlert = true;
   }
+  goHome(displayTask: AddTaskDTO[]): void {
+    if (displayTask.length == 1) {
+      this.router.navigate(['/']);
+      console.log('dellete');
+    }
+    console.log(displayTask.length);
+  }
+  async confirm(id: string): Promise<void> {
+    this._alertDtoStorage.next({ alertId: id });
+    await delay(4000);
+    this._alertDtoStorage.next(undefined);
+  }
+}
+function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
