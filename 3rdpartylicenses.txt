@@ -108,6 +108,9 @@ firebase/messaging
 
 firebase/remote-config
 
+ngx-bootstrap/alert
+MIT
+
 ngx-bootstrap/component-loader
 MIT
 
